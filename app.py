@@ -44,10 +44,10 @@ st.markdown(
 )
 
 st.markdown(
-    "Did you feed in power during sunny days?  \n"
-    "You might have provided power to the grid while the day-ahead price was negative, this results in you paying for providin power.  \n"
+    "Did you feed in power in the past period?  \n"
+    "You might have provided power to the grid while the day-ahead price was negative, this results in you paying for delevering power.  \n"
     "Upload your hourly energy usage and run the calculations to find out!  \n"
-    "Explanation: This tool uses the day-ahead prices from the ENTSOE platform for the Netherlands.  \n"
+    "Explanation: This tool uses the day-ahead prices from the ENTSOE platform API for the Netherlands.  \n"
     "The day-ahead prices are updated monthly; the current dataset is 01-01-2023 till 17-02-2025.  \n"
     "The template file has an hourly format, so upload your meter data using the template.  \n"
     "Either match the time stamps to those of the template or use the same format in dd-mm-yyyy HH:SS."
@@ -59,8 +59,8 @@ st.subheader("Let's analyse your energy profile and potential savings by curtail
 # Download Template CSV
 # ----------------------------
 st.write(
-    "Download the template file below and paste your energy profile in it. "
-    "Make sure to match the time formatting!!"
+    "Download the template file below and paste your energy profile in. "
+    "Make sure to match the time formatting."
 )
 with open("MeterDataKlant.csv", "rb") as file:
     st.download_button(
@@ -75,7 +75,7 @@ with open("MeterDataKlant.csv", "rb") as file:
 # ----------------------------
 uploaded_file = st.file_uploader("Upload your Hourly MeterDataKlant.csv", type=["csv"])
 afslag_VHP = st.number_input(
-    "Afslag VHP Adjustment (€/kWh)",
+    "Afslag adjustment (€/kWh)",
     min_value=-0.05, max_value=0.05,
     value=-0.0185, step=0.0005, format="%.4f"
 )
